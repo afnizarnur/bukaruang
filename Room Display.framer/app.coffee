@@ -138,19 +138,26 @@ todayDate.Align = "right"
 bukaruang_db.get "/ruang/0", (value) ->
 	room_name = new TextLayer
 		x: 126
-		y: 365
+		y: 300
 		text: value.name
 		fontSize: 36
 		parent: sketch.$01_Room_Display_In_Use
 		fontFamily: "Noto Sans"
 		fontWeight: 700
 		textAlign: "left"
+		opacity: 0
 		color: "rgba(238,238,238,1)"
+		
+	room_name.animate
+		opacity: 1
+		y: 365
+		options: 
+			time: 0.5
 		
 bukaruang_db.get "/meeting/0", (value) ->
 	meeting_name = new TextLayer
 		x: 123
-		y: 414
+		y: 360
 		text: value.desc
 		parent: sketch.$01_Room_Display_In_Use
 		fontSize: 96
@@ -158,4 +165,12 @@ bukaruang_db.get "/meeting/0", (value) ->
 		fontWeight: 700
 		textAlign: "left"
 		color: "rgba(238,238,238,1)"
+		
+	meeting_name.animate
+		opacity: 1
+		y: 414
+		options: 
+			time: 0.5
+		
+
 	

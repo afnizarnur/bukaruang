@@ -723,6 +723,79 @@
 						"children": []
 					}
 				]
+			},
+			{
+				"objectId": "AF5A4212-0850-4071-9AAD-9C4B768190A5",
+				"kind": "group",
+				"name": "Status",
+				"originalName": "Status",
+				"maskFrame": null,
+				"layerFrame": {
+					"x": 124,
+					"y": 959,
+					"width": 1120,
+					"height": 65
+				},
+				"visible": true,
+				"metadata": {
+					"opacity": 1
+				},
+				"children": [
+					{
+						"objectId": "7F7804C8-C026-4DD4-AE6C-CADC01F63BBE",
+						"kind": "group",
+						"name": "available",
+						"originalName": "available",
+						"maskFrame": null,
+						"layerFrame": {
+							"x": 124,
+							"y": 959,
+							"width": 1120,
+							"height": 65
+						},
+						"visible": true,
+						"metadata": {
+							"opacity": 1
+						},
+						"image": {
+							"path": "images/Layer-available-n0y3oda0.png",
+							"frame": {
+								"x": 124,
+								"y": 959,
+								"width": 1120,
+								"height": 65
+							}
+						},
+						"children": []
+					},
+					{
+						"objectId": "7C806F8E-BE5F-4212-A8DF-8C5EBB5C838C",
+						"kind": "group",
+						"name": "in_use",
+						"originalName": "in_use",
+						"maskFrame": null,
+						"layerFrame": {
+							"x": 124,
+							"y": 959,
+							"width": 1120,
+							"height": 65
+						},
+						"visible": true,
+						"metadata": {
+							"opacity": 1
+						},
+						"image": {
+							"path": "images/Layer-in_use-n0m4mdzg.png",
+							"frame": {
+								"x": 124,
+								"y": 959,
+								"width": 1120,
+								"height": 65
+							}
+						},
+						"children": []
+					}
+				]
 			}
 		]
 	}
