@@ -1,9 +1,11 @@
+# Import file "BukaRuang"
+sketch1 = Framer.Importer.load("imported/BukaRuang@1x", scale: 1)
 # Import file "Bukalapak"
 sketch = Framer.Importer.load("imported/Bukalapak@1x", scale: 1)
 
 # Set Device background
 Screen.backgroundColor = null
-Canvas.image = "images/wood.jpg"
+Canvas.image = "images/ruang.jpg"
 
 # Firebase Configuration
 {Firebase} = require 'firebase'
@@ -186,24 +188,30 @@ bukaruang_db.get "/ruang/0", (value) ->
 			options: 
 				time: 0.4
 		sketch.header.children[0].opacity = 1
-		
-bukaruang_db.get "/users", (avatars) ->
-	avatarsArray = _.toArray(avatars) # converts JSON to array
-	print name for name in namesArray
+
+showAvatarById = (param) ->
+	bukaruang_db.get "/users", (avatars) ->
+		avatarsArray = _.toArray(avatars) # converts JSON to array
+		for avatar in avatarsArray
+			if avatar.user_id is param 
+				return avatar.avatar
 				
 bukaruang_db.get "/meeting/0", (value) ->
 	n = 0
+	y = 1
 	while n < value.attendee.length
-		image = new Layer
+		avatarAttendee = new Layer
 			x: 124 + 65 * n
 			y: 739 
 			width: 57
 			height: 57
+			parent: sketch.$01_Room_Display_In_Use
 			backgroundColor: "transparent"
-			image: 
+			image: showAvatarById(y)
 			borderRadius: 28.5
 			borderColor: "rgba(255,255,255,1)"
 			borderWidth: 7
+		y++
 		n++
 			
 	meeting_name = new TextLayer
@@ -234,6 +242,19 @@ bukaruang_db.get "/meeting/0", (value) ->
 		y: 414
 		options: 
 			time: 0.3
-		
-
+# 
+sketch.Menu.onClick (event, layer) ->
+	sketch.$01_Room_Display_In_Use.animate 
+		blur: 10
+		options:
+			time: 0.2
+			curve: Bezier.ease
+			
+sketch.$01_Room_Display_In_Use.onClick (event, layer) ->
+	this.animate
+		blur: 0
+		options:
+			time: 0.2
+			curve: Bezier.ease
+	
 	
