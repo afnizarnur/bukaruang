@@ -651,9 +651,9 @@ window.__imported__["Bukalapak@1x/layers.json.js"] = [
 				"maskFrame": null,
 				"layerFrame": {
 					"x": 123,
-					"y": 365,
-					"width": 879,
-					"height": 261
+					"y": 295,
+					"width": 175,
+					"height": 42
 				},
 				"visible": true,
 				"metadata": {
@@ -663,12 +663,67 @@ window.__imported__["Bukalapak@1x/layers.json.js"] = [
 					"path": "images/Layer-header-rkvgnuze.png",
 					"frame": {
 						"x": 123,
-						"y": 365,
-						"width": 879,
-						"height": 261
+						"y": 295,
+						"width": 175,
+						"height": 42
 					}
 				},
-				"children": []
+				"children": [
+					{
+						"objectId": "FBB5CA62-6435-44DD-9A2B-607CE151B049",
+						"kind": "group",
+						"name": "in_use",
+						"originalName": "in use",
+						"maskFrame": null,
+						"layerFrame": {
+							"x": 123,
+							"y": 295,
+							"width": 120,
+							"height": 42
+						},
+						"visible": true,
+						"metadata": {
+							"opacity": 1
+						},
+						"image": {
+							"path": "images/Layer-in_use-rkjcnunb.png",
+							"frame": {
+								"x": 123,
+								"y": 295,
+								"width": 120,
+								"height": 42
+							}
+						},
+						"children": []
+					},
+					{
+						"objectId": "FF12E052-3E37-4AFB-9E32-C60902E76009",
+						"kind": "group",
+						"name": "available",
+						"originalName": "available",
+						"maskFrame": null,
+						"layerFrame": {
+							"x": 123,
+							"y": 295,
+							"width": 175,
+							"height": 42
+						},
+						"visible": true,
+						"metadata": {
+							"opacity": 1
+						},
+						"image": {
+							"path": "images/Layer-available-rkyxmkuw.png",
+							"frame": {
+								"x": 123,
+								"y": 295,
+								"width": 175,
+								"height": 42
+							}
+						},
+						"children": []
+					}
+				]
 			},
 			{
 				"objectId": "E42D6C77-16C2-40F1-A885-58878D6EDDA2",
@@ -745,7 +800,7 @@ window.__imported__["Bukalapak@1x/layers.json.js"] = [
 					{
 						"objectId": "7F7804C8-C026-4DD4-AE6C-CADC01F63BBE",
 						"kind": "group",
-						"name": "available",
+						"name": "available1",
 						"originalName": "available",
 						"maskFrame": null,
 						"layerFrame": {
@@ -772,7 +827,7 @@ window.__imported__["Bukalapak@1x/layers.json.js"] = [
 					{
 						"objectId": "7C806F8E-BE5F-4212-A8DF-8C5EBB5C838C",
 						"kind": "group",
-						"name": "in_use",
+						"name": "in_use1",
 						"originalName": "in_use",
 						"maskFrame": null,
 						"layerFrame": {

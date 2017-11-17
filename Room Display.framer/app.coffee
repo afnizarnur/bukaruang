@@ -20,7 +20,7 @@ ruangData = [
 			desc: "Deskripsi tentang Blue Room"
 			capacity: "20"
 			location: "Plaza City View"
-			status: "In Use"
+			status: 1
 		}
 	]	
 	
@@ -64,9 +64,25 @@ attendeeData = [
 usersData = [
 		{
 			user_id: 1
-			name: "Afnizar"
+			name: "Afnizar Nur Ghifari"
 			email: "afnizar.hilmi@bukalapak.com"
 			avatar: "https://firebasestorage.googleapis.com/v0/b/bukaruang.appspot.com/o/500x500.jpg?alt=media&token=167fffaf-292c-48c3-b534-5759f2073868"
+			status: "user"
+		}
+		
+		{
+			user_id: 2
+			name: "Hendrawan Fernando"
+			email: "hendrawan.fernando@bukalapak.com"
+			avatar: "https://firebasestorage.googleapis.com/v0/b/bukaruang.appspot.com/o/1-dT_mJBVOjtwIywZ0Csi6SQ.jpeg?alt=media&token=b7d431de-7a36-4154-96fd-58ae7938cf08"
+			status: "user"
+		}
+		
+		{
+			user_id: 3
+			name: "Adwin Dito"
+			email: "adwin.dito@bukalapak.com"
+			avatar: "https://firebasestorage.googleapis.com/v0/b/bukaruang.appspot.com/o/images.jpeg?alt=media&token=0f35828a-c7e7-4b44-bcfe-26b619943c14"
 			status: "user"
 		}
 ]
@@ -99,7 +115,6 @@ todayDate = new TextLayer
 	textAlign: "right"
 	color: "rgba(238,238,238,1)"
 	opacity: 0.800000011920929
-	
 
 # Time Right Now
 setTime = () ->
@@ -134,6 +149,12 @@ setDate = () ->
 setDate()
 
 todayDate.Align = "right"
+sketch.header.children[0].opacity = 0
+sketch.header.children[1].opacity = 0	
+sketch.Status.children[0].opacity = 0
+sketch.Status.children[0].y = Screen.height
+sketch.Status.children[1].opacity = 0
+sketch.Status.children[1].y = Screen.height	
 
 bukaruang_db.get "/ruang/0", (value) ->
 	room_name = new TextLayer
@@ -152,25 +173,57 @@ bukaruang_db.get "/ruang/0", (value) ->
 		opacity: 1
 		y: 365
 		options: 
-			time: 0.5
+			time: 0.3
+	
+	
+	if value.status is 1 
+		sketch.Status.children[0].animate
+			opacity: 1
+			y: 0
+			options: 
+				time: 0.4
+		sketch.header.children[1].opacity = 1
+		sketch.Status.children[1].opacity = 0
+		sketch.header.children[0].opacity = 0
+	else if value.status is 0
+		sketch.Status.children[0].opacity = 0
+		sketch.header.children[1].opacity = 0
+		sketch.Status.children[1].animate
+			opacity: 1
+			y: 0
+			options: 
+				time: 0.4
+		sketch.header.children[0].opacity = 1
 		
 bukaruang_db.get "/meeting/0", (value) ->
 	meeting_name = new TextLayer
 		x: 123
-		y: 360
+		y: 350
 		text: value.desc
 		parent: sketch.$01_Room_Display_In_Use
 		fontSize: 96
+		opacity: 0
 		fontFamily: "Noto Sans"
 		fontWeight: 700
 		textAlign: "left"
 		color: "rgba(238,238,238,1)"
 		
+	meeting_time = new TextLayer
+		x: 123
+		y: 577
+		parent: sketch.$01_Room_Display_In_Use
+		text: "#{value.time_start} - #{value.time_end}"
+		fontSize: 36
+		fontFamily: "Noto Sans"
+		textAlign: "left"
+		color: "rgba(238,238,238,1)"
+		opacity: 0.800000011920929
+		
 	meeting_name.animate
 		opacity: 1
 		y: 414
 		options: 
-			time: 0.5
+			time: 0.3
 		
 
 	
