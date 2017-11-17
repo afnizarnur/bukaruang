@@ -242,19 +242,118 @@ bukaruang_db.get "/meeting/0", (value) ->
 		y: 414
 		options: 
 			time: 0.3
-# 
+
+searchAvailableRoo = new TextLayer
+	x: 491
+	y: 154
+	text: "Search Available Room"
+	fontSize: 36
+	fontFamily: "Noto Sans"
+	letterSpacing: 0.0
+	textAlign: "left"
+	opacity: 0
+	color: "rgba(255,255,255,1)"
+	
+searchAvailableRoo.states.hide =
+	opacity: 0
+	scale: 2
+	animationOptions:
+		time: 0.2
+		curve: Bezier.ease
+
+searchAvailableRoo.states.show =
+	opacity: 1
+	scale: 1
+	animationOptions:
+		time: 0.2
+		curve: Bezier.ease
+
+
+
+# Variables
+tileCount = 26
+columnCount = 3
+gutter = 30
+
+combinedGutterWidth = gutter * (columnCount - 1)
+combinedTileWidth = Screen.width - combinedGutterWidth - 200
+tileWidth = combinedTileWidth / columnCount
+tileOffset = tileWidth + gutter
+
+scrollRoom = new ScrollComponent
+	size: Screen.width - 200
+	scrollHorizontal: false
+	x: Align.center
+	opacity: 0
+
+searchAvailableRoo.bringToFront
+	
+# Loop to create grid tiles
+for index in [0...tileCount]
+	columnIndex = index % columnCount
+	rowIndex = Math.floor(index / columnCount)
+	tile = new Layer
+		x: columnIndex * tileOffset
+		y: rowIndex * tileOffset
+		size: tileWidth
+		borderRadius: 30
+		parent: scrollRoom.content
+		backgroundColor: "#fff"
+
+scrollRoom.states.hide =
+	opacity: 0
+	y: 800
+	animationOptions:
+		time: 0.2
+		curve: Bezier.ease
+
+scrollRoom.states.show =
+	opacity: 1
+	y: 300
+	animationOptions:
+		time: 0.2
+		curve: Bezier.ease
+
+searchAvailableRoo.stateSwitch("hide")
+scrollRoom.stateSwitch("hide")
+
+overlay = new Layer
+	width: Screen.width
+	height: Screen.height
+	backgroundColor: "#000"
+	opacity: 0
+
+scrollRoom.bringToFront()
+	
+overlay.states.active =
+	opacity: 0.5
+	animationOptions:
+		time: 0.2
+		curve: Bezier.ease
+		
+overlay.states.hide =
+	opacity: 0
+	animationOptions:
+		time: 0.2
+		curve: Bezier.ease
+		
 sketch.Menu.onClick (event, layer) ->
+	overlay.animate("active")
+	searchAvailableRoo.animate("show")
+	scrollRoom.animate("show")
 	sketch.$01_Room_Display_In_Use.animate 
-		blur: 10
+		blur: 15
 		options:
 			time: 0.2
 			curve: Bezier.ease
 			
 sketch.$01_Room_Display_In_Use.onClick (event, layer) ->
+	overlay.animate("hide")
+	searchAvailableRoo.animate("hide")
+	scrollRoom.animate("hide")
 	this.animate
 		blur: 0
 		options:
 			time: 0.2
 			curve: Bezier.ease
-	
-	
+			
