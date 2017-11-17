@@ -734,8 +734,8 @@ window.__imported__["Bukalapak@1x/layers.json.js"] = [
 				"layerFrame": {
 					"x": 124,
 					"y": 689,
-					"width": 338,
-					"height": 111
+					"width": 107,
+					"height": 13
 				},
 				"visible": true,
 				"metadata": {
@@ -746,8 +746,8 @@ window.__imported__["Bukalapak@1x/layers.json.js"] = [
 					"frame": {
 						"x": 124,
 						"y": 689,
-						"width": 338,
-						"height": 111
+						"width": 107,
+						"height": 13
 					}
 				},
 				"children": [
@@ -763,7 +763,7 @@ window.__imported__["Bukalapak@1x/layers.json.js"] = [
 							"width": 131,
 							"height": 61
 						},
-						"visible": true,
+						"visible": false,
 						"metadata": {
 							"opacity": 1
 						},

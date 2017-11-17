@@ -43,21 +43,15 @@ meetingData = [
 			ruang_id: 1
 			desc: "UI Weekly Meetup"
 			organizer: 1
-			date: "18 November 2017"
-			time_start: "18:30"
-			time_end: "20:30"
-			status: "Not yet started"
-		}
-]
-
-attendeeData = [
-		{
-			meeting_id: 1
 			attendee: [
 				{ user_id: 1 }
 				{ user_id: 2 }
 				{ user_id: 3 }
 			]
+			date: "18 November 2017"
+			time_start: "18:30"
+			time_end: "20:30"
+			status: "Not yet started"
 		}
 ]
 
@@ -91,7 +85,6 @@ usersData = [
 bukaruang_db.put("/ruang", ruangData)
 bukaruang_db.put("/amenities", amenitiesData)
 bukaruang_db.put("/meeting", meetingData)
-bukaruang_db.put("/attendee", attendeeData)
 bukaruang_db.put("/users", usersData)
 
 timeNow = new TextLayer
@@ -174,8 +167,7 @@ bukaruang_db.get "/ruang/0", (value) ->
 		y: 365
 		options: 
 			time: 0.3
-	
-	
+
 	if value.status is 1 
 		sketch.Status.children[0].animate
 			opacity: 1
@@ -195,7 +187,25 @@ bukaruang_db.get "/ruang/0", (value) ->
 				time: 0.4
 		sketch.header.children[0].opacity = 1
 		
+bukaruang_db.get "/users", (avatars) ->
+	avatarsArray = _.toArray(avatars) # converts JSON to array
+	print name for name in namesArray
+				
 bukaruang_db.get "/meeting/0", (value) ->
+	n = 0
+	while n < value.attendee.length
+		image = new Layer
+			x: 124 + 65 * n
+			y: 739 
+			width: 57
+			height: 57
+			backgroundColor: "transparent"
+			image: 
+			borderRadius: 28.5
+			borderColor: "rgba(255,255,255,1)"
+			borderWidth: 7
+		n++
+			
 	meeting_name = new TextLayer
 		x: 123
 		y: 350
