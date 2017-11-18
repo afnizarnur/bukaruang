@@ -1,7 +1,5 @@
 # Import file "BukaRuang"
-sketch1 = Framer.Importer.load("imported/BukaRuang@1x", scale: 1)
-# Import file "Bukalapak"
-sketch = Framer.Importer.load("imported/Bukalapak@1x", scale: 1)
+sketch = Framer.Importer.load("imported/BukaRuang@1x", scale: 1)
 
 # Set Device background
 Screen.backgroundColor = null
@@ -22,7 +20,7 @@ ruangData = [
 			desc: "Deskripsi tentang Blue Room"
 			capacity: "20"
 			location: "Plaza City View"
-			status: 1
+			status: 0
 		}
 	]	
 	
@@ -197,23 +195,23 @@ showAvatarById = (param) ->
 				return avatar.avatar
 				
 bukaruang_db.get "/meeting/0", (value) ->
-	n = 0
-	y = 1
-	while n < value.attendee.length
-		avatarAttendee = new Layer
-			x: 124 + 65 * n
-			y: 739 
-			width: 57
-			height: 57
-			parent: sketch.$01_Room_Display_In_Use
-			backgroundColor: "transparent"
-			image: showAvatarById(y)
-			borderRadius: 28.5
-			borderColor: "rgba(255,255,255,1)"
-			borderWidth: 7
-		y++
-		n++
-			
+# 	n = 0
+# 	y = 1
+# 	while n < value.attendee.length
+# 		avatarAttendee = new Layer
+# 			x: 124 + 65 * n
+# 			y: 739 
+# 			width: 57
+# 			height: 57
+# 			parent: sketch.$01_Room_Display_In_Use
+# 			backgroundColor: "transparent"
+# 			image: showAvatarById(y)
+# 			borderRadius: 28.5
+# 			borderColor: "rgba(255,255,255,1)"
+# 			borderWidth: 7
+# 		y++
+# 		n++
+# 			
 	meeting_name = new TextLayer
 		x: 123
 		y: 350
@@ -285,8 +283,6 @@ scrollRoom = new ScrollComponent
 	scrollHorizontal: false
 	x: Align.center
 	opacity: 0
-
-searchAvailableRoo.bringToFront
 	
 # Loop to create grid tiles
 for index in [0...tileCount]
@@ -324,6 +320,7 @@ overlay = new Layer
 	opacity: 0
 
 scrollRoom.bringToFront()
+searchAvailableRoo.bringToFront()
 	
 overlay.states.active =
 	opacity: 0.5

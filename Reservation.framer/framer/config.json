@@ -1,22 +1,22 @@
 {
-  "orientation" : 90,
+  "orientation" : 0,
   "updateDelay" : 0.29999999999999999,
   "designModeSelected" : 0,
-  "cachedDeviceHeight" : 1024,
+  "cachedDeviceHeight" : 900,
   "contentScale" : 1,
+  "cachedDeviceWidth" : 1440,
   "fullScreen" : false,
-  "cachedDeviceWidth" : 1366,
-  "deviceType" : "apple-ipad-pro-space-gray",
+  "deviceType" : "apple-macbook-pro",
   "sharedPrototype" : 0,
   "propertyPanelToggleStates" : {
-    "Filters" : false
+
   },
-  "projectId" : "464FA83F-C741-4BCA-B0CD-CA8F3C057A7C",
-  "deviceOrientation" : 90,
+  "projectId" : "F215E6A8-9553-491A-973B-AE4425280076",
+  "deviceOrientation" : 0,
   "selectedHand" : "",
   "showBezel" : true,
   "foldedCodeRanges" : [
-    "{344, 1414}"
+
   ],
   "deviceScale" : 0.5
 }
