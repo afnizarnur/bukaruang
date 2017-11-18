@@ -81,7 +81,6 @@ usersData = [
 		}
 ]
 
-	
 bukaruang_db.put("/ruang", ruangData)
 bukaruang_db.put("/amenities", amenitiesData)
 bukaruang_db.put("/meeting", meetingData)
@@ -241,14 +240,90 @@ bukaruang_db.get "/meeting/0", (value) ->
 		options: 
 			time: 0.3
 
+
+# Variables
+tileCount = 10
+columnCount = 3
+gutter = 30
+
+combinedGutterWidth = gutter * (columnCount - 1)
+combinedTileWidth = Screen.width - combinedGutterWidth - 200
+tileWidth = combinedTileWidth / columnCount
+tileOffset = tileWidth + gutter
+
+scrollRoom = new ScrollComponent
+	size: Screen.width - 200
+	scrollHorizontal: false
+	x: Align.center	
+	contentInset: 
+		top: 100
+	opacity: 0
+	
+# Loop to create grid tiles
+tileWrap = new Layer
+	parent: scrollRoom.content
+	y: 200
+	contentInset: 
+		top: 200
+		bottom: 200
+
+for index in [0...tileCount]
+	columnIndex = index % columnCount
+	rowIndex = Math.floor(index / columnCount)
+	tile = new Layer
+		x: columnIndex * tileOffset
+		y: rowIndex * tileOffset
+		size: tileWidth
+		borderRadius: 30
+		parent: tileWrap
+		image: "images/ruang.jpg"
+		borderColor: Utils.randomChoice(["red", "green"])
+		borderWidth: 5
+	
+	tileBlack = new Layer
+		size: tileWidth
+		backgroundColor: "#000"
+		opacity: .5
+		borderRadius: 30
+		borderWidth: 5
+		parent: tile
+	
+	ruangText = new TextLayer
+		text: Utils.randomChoice(["Kolaborasi Room", "Blue Room", "Pink Room", "Red Room", "Library", "Fun Room"])
+		x: Align.center
+		y: Align.bottom(-30)
+		parent: tile
+		color: "#FFF"
+		fontSize: 28
+		fontFamily: "Noto Sans"
+		letterSpacing: 0.0
+		textAlign: "right"
+		color: "rgba(238,238,238,1)"
+		
+
+
+scrollRoom.states.hide =
+	opacity: 0
+	y: 800
+	animationOptions:
+		time: 0.2
+		curve: Bezier.ease
+
+scrollRoom.states.show =
+	opacity: 1
+	y: 0
+	animationOptions:
+		time: 0.2
+		curve: Bezier.ease
+		
 searchAvailableRoo = new TextLayer
-	x: 491
-	y: 154
+	y: 50
 	text: "Search Available Room"
 	fontSize: 36
 	fontFamily: "Noto Sans"
 	letterSpacing: 0.0
-	textAlign: "left"
+	x: Align.center
+	parent: scrollRoom.content
 	opacity: 0
 	color: "rgba(255,255,255,1)"
 	
@@ -266,50 +341,6 @@ searchAvailableRoo.states.show =
 		time: 0.2
 		curve: Bezier.ease
 
-
-
-# Variables
-tileCount = 26
-columnCount = 3
-gutter = 30
-
-combinedGutterWidth = gutter * (columnCount - 1)
-combinedTileWidth = Screen.width - combinedGutterWidth - 200
-tileWidth = combinedTileWidth / columnCount
-tileOffset = tileWidth + gutter
-
-scrollRoom = new ScrollComponent
-	size: Screen.width - 200
-	scrollHorizontal: false
-	x: Align.center
-	opacity: 0
-	
-# Loop to create grid tiles
-for index in [0...tileCount]
-	columnIndex = index % columnCount
-	rowIndex = Math.floor(index / columnCount)
-	tile = new Layer
-		x: columnIndex * tileOffset
-		y: rowIndex * tileOffset
-		size: tileWidth
-		borderRadius: 30
-		parent: scrollRoom.content
-		backgroundColor: "#fff"
-
-scrollRoom.states.hide =
-	opacity: 0
-	y: 800
-	animationOptions:
-		time: 0.2
-		curve: Bezier.ease
-
-scrollRoom.states.show =
-	opacity: 1
-	y: 300
-	animationOptions:
-		time: 0.2
-		curve: Bezier.ease
-
 searchAvailableRoo.stateSwitch("hide")
 scrollRoom.stateSwitch("hide")
 
@@ -318,6 +349,7 @@ overlay = new Layer
 	height: Screen.height
 	backgroundColor: "#000"
 	opacity: 0
+# 	parent: sketch.$01_Room_Display_In_Use
 
 scrollRoom.bringToFront()
 searchAvailableRoo.bringToFront()
@@ -353,4 +385,3 @@ sketch.$01_Room_Display_In_Use.onClick (event, layer) ->
 		options:
 			time: 0.2
 			curve: Bezier.ease
-			

@@ -13,3 +13,9 @@ sketch.Group_8.onClick ->
 	
 sketch.nyoba.onClick ->
 	flow.showNext(sketch.buat_event_baru1)
+	
+sketch.Group_44.onClick ->
+	flow.showNext(sketch.step1)
+	
+sketch.Group_49.onClick ->
+	flow.showNext(sketch.home1)
