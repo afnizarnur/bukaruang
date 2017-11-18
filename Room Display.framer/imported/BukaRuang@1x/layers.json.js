@@ -644,6 +644,60 @@ window.__imported__["BukaRuang@1x/layers.json.js"] = [
 				]
 			},
 			{
+				"objectId": "B58CAEA8-8A09-4F55-BAB9-6553DA69CDC3",
+				"kind": "group",
+				"name": "Start_meeting_Copy",
+				"originalName": "Start_meeting Copy",
+				"maskFrame": null,
+				"layerFrame": {
+					"x": 362,
+					"y": 575,
+					"width": 206,
+					"height": 61
+				},
+				"visible": true,
+				"metadata": {
+					"opacity": 1
+				},
+				"image": {
+					"path": "images/Layer-Start_meeting_Copy-qju4q0ff.png",
+					"frame": {
+						"x": 362,
+						"y": 575,
+						"width": 206,
+						"height": 61
+					}
+				},
+				"children": []
+			},
+			{
+				"objectId": "5026B7D1-178F-492F-B2DB-C61AF07385FE",
+				"kind": "group",
+				"name": "end_meeting",
+				"originalName": "end_meeting",
+				"maskFrame": null,
+				"layerFrame": {
+					"x": 362,
+					"y": 575,
+					"width": 191,
+					"height": 61
+				},
+				"visible": true,
+				"metadata": {
+					"opacity": 1
+				},
+				"image": {
+					"path": "images/Layer-end_meeting-ntaynki3.png",
+					"frame": {
+						"x": 362,
+						"y": 575,
+						"width": 191,
+						"height": 61
+					}
+				},
+				"children": []
+			},
+			{
 				"objectId": "FEF5FD32-72FD-4250-B604-39A77039F5D0",
 				"kind": "group",
 				"name": "header",

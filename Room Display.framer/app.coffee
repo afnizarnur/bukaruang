@@ -147,6 +147,8 @@ sketch.Status.children[0].opacity = 0
 sketch.Status.children[0].y = Screen.height
 sketch.Status.children[1].opacity = 0
 sketch.Status.children[1].y = Screen.height	
+sketch.end_meeting.opacity = 0
+sketch.Start_meeting_Copy.opacity = 0
 
 bukaruang_db.get "/ruang/0", (value) ->
 	room_name = new TextLayer
@@ -174,11 +176,49 @@ bukaruang_db.get "/ruang/0", (value) ->
 			options: 
 				time: 0.4
 		sketch.header.children[1].opacity = 1
+		sketch.end_meeting.opacity = 1
+		sketch.Start_meeting_Copy.opacity = 0
 		sketch.Status.children[1].opacity = 0
 		sketch.header.children[0].opacity = 0
 	else if value.status is 0
 		sketch.Status.children[0].opacity = 0
 		sketch.header.children[1].opacity = 0
+		sketch.Start_meeting_Copy.opacity = 1
+		sketch.end_meeting.opacity = 0
+		sketch.Status.children[1].animate
+			opacity: 1
+			y: 0
+			options: 
+				time: 0.4
+		sketch.header.children[0].opacity = 1
+
+sketch.Start_meeting_Copy.onClick ->
+	bukaruang_db.put("/ruang/0/status", 1)
+	sketch.end_meeting.opacity = 1
+	this.placeBehind(sketch.end_meeting)
+	this.opacity = 0
+
+sketch.end_meeting.onClick ->
+	bukaruang_db.put("/ruang/0/status", 0)
+	sketch.Start_meeting_Copy.opacity = 1
+	this.placeBehind(sketch.Start_meeting_Copy)
+	this.opacity = 0
+	
+bukaruang_db.onChange "/ruang/0/status", (value) ->
+	if value is 1 
+		sketch.Status.children[0].animate
+			opacity: 1
+			y: 0
+			options: 
+				time: 0.4
+		sketch.header.children[1].opacity = 1
+		sketch.end_meeting.opacity = 1
+		sketch.Status.children[1].opacity = 0
+		sketch.header.children[0].opacity = 0
+	else if value is 0
+		sketch.Status.children[0].opacity = 0
+		sketch.header.children[1].opacity = 0
+		sketch.Start_meeting_Copy.opacity = 1
 		sketch.Status.children[1].animate
 			opacity: 1
 			y: 0
@@ -192,6 +232,8 @@ showAvatarById = (param) ->
 		for avatar in avatarsArray
 			if avatar.user_id is param 
 				return avatar.avatar
+				
+
 				
 bukaruang_db.get "/meeting/0", (value) ->
 # 	n = 0
@@ -242,7 +284,7 @@ bukaruang_db.get "/meeting/0", (value) ->
 
 
 # Variables
-tileCount = 10
+tileCount = 3
 columnCount = 3
 gutter = 30
 
@@ -266,7 +308,8 @@ tileWrap = new Layer
 	contentInset: 
 		top: 200
 		bottom: 200
-
+		
+countimg  = 1
 for index in [0...tileCount]
 	columnIndex = index % columnCount
 	rowIndex = Math.floor(index / columnCount)
@@ -276,9 +319,11 @@ for index in [0...tileCount]
 		size: tileWidth
 		borderRadius: 30
 		parent: tileWrap
-		image: "images/ruang.jpg"
+		image: "images/"+countimg+".jpg"
 		borderColor: Utils.randomChoice(["red", "green"])
 		borderWidth: 5
+		
+	countimg++
 	
 	tileBlack = new Layer
 		size: tileWidth
