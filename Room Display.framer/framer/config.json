@@ -7,7 +7,7 @@
   "fullScreen" : false,
   "cachedDeviceWidth" : 1366,
   "deviceType" : "apple-ipad-pro-space-gray",
-  "sharedPrototype" : 0,
+  "sharedPrototype" : true,
   "propertyPanelToggleStates" : {
     "Filters" : false
   },

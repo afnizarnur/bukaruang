@@ -643,6 +643,33 @@
 				]
 			},
 			{
+				"objectId": "3E93BB31-7359-49D7-AAF4-AE28011A75A5",
+				"kind": "group",
+				"name": "QUICK",
+				"originalName": "QUICK",
+				"maskFrame": null,
+				"layerFrame": {
+					"x": 124,
+					"y": 857,
+					"width": 206,
+					"height": 61
+				},
+				"visible": true,
+				"metadata": {
+					"opacity": 1
+				},
+				"image": {
+					"path": "images/Layer-QUICK-m0u5m0jc.png",
+					"frame": {
+						"x": 124,
+						"y": 857,
+						"width": 206,
+						"height": 61
+					}
+				},
+				"children": []
+			},
+			{
 				"objectId": "B58CAEA8-8A09-4F55-BAB9-6553DA69CDC3",
 				"kind": "group",
 				"name": "Start_meeting_Copy",

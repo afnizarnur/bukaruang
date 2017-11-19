@@ -328,7 +328,7 @@ for index in [0...tileCount]
 	tileBlack = new Layer
 		size: tileWidth
 		backgroundColor: "#000"
-		opacity: .5
+		opacity: .3
 		borderRadius: 30
 		borderWidth: 5
 		parent: tile
